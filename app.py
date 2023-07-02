@@ -55,7 +55,7 @@ if sidebar == 'metrices' :
     date_6mo = df_agg_metrics['Video publish time'].max() - pd.DateOffset(months= 6)
     date_12mo = df_agg_metrics['Video publish time'].max() - pd.DateOffset(months= 12)
     metric_med_6 = df_agg_metrics[df_agg_metrics['Video publish time'] >= date_6mo ].median()
-    st.write(metric_med_6)
+    st.dataframe(metric_med_6)
     metric_med_12 = df_agg_metrics[df_agg_metrics['Video publish time'] >= date_12mo ].median()
     #delta = metric_med_6['Views'] - metric_med_12['Views'] /  metric_med_12['Views']
     #st.metric('views change ' , metric_med_6['Views'] ,delta= delta)
