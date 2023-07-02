@@ -177,3 +177,4 @@ wrapt==1.14.0
 yapf==0.32.0
 zipp==3.7.0
 pandas-profiling==3.6.6
+streamlit-pandas-profiling==0.1.3
