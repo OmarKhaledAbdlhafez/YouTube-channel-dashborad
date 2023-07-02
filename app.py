@@ -8,8 +8,8 @@ import pandas_profiling
 from streamlit_pandas_profiling import st_profile_report
 
 
-df_agg = pd.read_csv('.\\data\\Aggregated_Metrics_By_Video.csv').iloc[1:,:]
-df_agg_sub = pd.read_csv('.\\data\\Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
+df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
+df_agg_sub = pd.read_csv('Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
 df_agg.columns = ['Video','Video title','Video publish time','Comments added','Shares','Dislikes','Likes',
                       'Subscribers lost','Subscribers gained','RPM(USD)','CPM(USD)','Average % viewed','Average view duration',
                       'Views','Watch time (hours)','Subscribers','Your estimated revenue (USD)','Impressions','Impressions ctr(%)']
