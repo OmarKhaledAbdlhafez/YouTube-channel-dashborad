@@ -14,7 +14,7 @@ df_agg.columns = ['Video','Video title','Video publish time','Comments added','S
                       'Subscribers lost','Subscribers gained','RPM(USD)','CPM(USD)','Average % viewed','Average view duration',
                       'Views','Watch time (hours)','Subscribers','Your estimated revenue (USD)','Impressions','Impressions ctr(%)']
 #df_agg['Video publish time'] = pd.to_datetime(df_agg['Video publish time'])
-df_agg['Video publish time'] = df_agg['Video publish time'].apply(lambda x: datetime.strptime(x,'%H:%M:%S'))
+df_agg['Video publish time'] = df_agg['Video publish time'].apply(lambda x: datetime.strptime(x,'%d/%m/%y %H:%M:%S.%f'))
 df_agg['Average view duration'] = df_agg['Average view duration'].apply(lambda x: datetime.strptime(x,'%H:%M:%S'))
 df_agg['Avg_duration_sec'] = df_agg['Average view duration'].apply(lambda x: x.second + x.minute*60 + x.hour*3600)
 df_agg['Engagement_ratio'] =  (df_agg['Comments added'] + df_agg['Shares'] +df_agg['Dislikes'] + df_agg['Likes']) /df_agg.Views
