@@ -64,8 +64,8 @@ if sidebar == 'metrices' :
     for i in metric_med_12.index :
         with cols[count]:
             count +=1
-            delta = 5 #(metric_med_6[i] - metric_med_12[i]) /  (metric_med_12[i])
-            st.metric(i , metric_med_6[i] ,delta=5 ) #"{:.03f}".format(delta))
+            delta = (metric_med_6[i] - metric_med_12[i]) /  (metric_med_12[i])
+            st.metric(i , metric_med_6[i] ,delta="{:.03f}".format(delta))
             if count >= 5 :
                 count =0
     
