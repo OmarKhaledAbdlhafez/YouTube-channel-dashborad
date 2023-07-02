@@ -65,7 +65,7 @@ if sidebar == 'metrices' :
         with cols[count]:
             count +=1
             #delta = (metric_med_6[i] - metric_med_12[i]) /  (metric_med_12[i])
-            st.metric(i ,5 )#, metric_med_6[i] ,delta="{:.03f}".format(delta))
+            st.metric(i ,round(metric_med_6[i] ,2) ) # ,delta="{:.03f}".format(delta))
             if count >= 5 :
                 count =0
     
