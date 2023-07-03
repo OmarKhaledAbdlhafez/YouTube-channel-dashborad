@@ -8,15 +8,17 @@ import pandas_profiling
 from streamlit_pandas_profiling import st_profile_report
 
 
-df_agg = pd.read_csv('data.csv')
-df_agg_sub = pd.read_csv('Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
-df_agg['Video publish time'] = pd.to_datetime(df_agg['Video publish time'])
-#df_agg['Average view duration'] = df_agg['Average view duration'].apply(lambda x: datetime.strptime(x,'%H:%M:%S'))
-#df_agg['Avg_duration_sec'] = df_agg['Average view duration'].apply(lambda x: x.second + x.minute*60 + x.hour*3600)
+df_agg = pd.read_csv('.\\data\\Aggregated_Metrics_By_Video.csv').iloc[1:,:]
+df_agg_sub = pd.read_csv('.\\data\\Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
+df_agg.columns = ['Video','Video title','Video publish time','Comments added','Shares','Dislikes','Likes',
+                      'Subscribers lost','Subscribers gained','RPM(USD)','CPM(USD)','Average % viewed','Average view duration',
+                      'Views','Watch time (hours)','Subscribers','Your estimated revenue (USD)','Impressions','Impressions ctr(%)']
+df_agg['Video publish time'] = pd.to_datetime(df_agg['Video publish time'] )
+df_agg['Average view duration'] = df_agg['Average view duration'].apply(lambda x: datetime.strptime(x,'%H:%M:%S'))
+df_agg['Avg_duration_sec'] = df_agg['Average view duration'].apply(lambda x: x.second + x.minute*60 + x.hour*3600)
 df_agg['Engagement_ratio'] =  (df_agg['Comments added'] + df_agg['Shares'] +df_agg['Dislikes'] + df_agg['Likes']) /df_agg.Views
 df_agg['Views / sub gained'] = df_agg['Views'] / df_agg['Subscribers gained']
 df_agg.sort_values('Video publish time', ascending = False, inplace = True)    
-
 
 sidebar = st.sidebar.selectbox('select page ' , ('overview' , 'metrices' ,'video'))
 
@@ -60,8 +62,8 @@ if sidebar == 'metrices' :
     for i in metric_med_12.index :
         with cols[count]:
             count +=1
-            #delta = (metric_med_6[i] - metric_med_12[i]) /  (metric_med_12[i])
-            st.metric(i ,round(metric_med_6[i] ,2) ) # ,delta="{:.03f}".format(delta))
+            delta = metric_med_6[i] - metric_med_12[i] /  metric_med_12[i]
+            st.metric(i , metric_med_6[i] ,delta= "{:.03f}".format(delta))
             if count >= 5 :
                 count =0
     
