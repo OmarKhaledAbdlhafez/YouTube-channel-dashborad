@@ -22,8 +22,8 @@ sidebar = st.sidebar.selectbox('select page ' , ('overview' , 'metrices' ,'video
 
 if sidebar == 'overview' :
     st.header('OverView')
-    pr = df_agg.profile_report()
-    st_profile_report(pr)
+    #pr = df_agg.profile_report()
+    #st_profile_report(pr)
 
 
 if sidebar == 'metrices' :
